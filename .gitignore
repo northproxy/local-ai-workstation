@@ -1,0 +1,47 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local LLM models / caches
+*.gguf
+*.safetensors
+*.bin
+models/
+cache/
+.cache/
+huggingface/
+ollama/
+
+# RAG / vector DB / generated indexes
+vector_db/
+chroma/
+qdrant_storage/
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs / temp
+logs/
+tmp/
+temp/
+*.log
+
+# Benchmark raw/generated files that should stay local
+benchmarks/raw/
