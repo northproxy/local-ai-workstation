@@ -23,7 +23,7 @@
 - Windows
 - LM Studio
 - Git
-- GitHub mirror planned
+- GitHub repository configured (`origin`)
 
 ## Current model benchmarks
 
@@ -32,7 +32,7 @@
 | Gemma 4 E4B QAT | QAT | ~52 tok/s | Very fast, answer quality less preferred |
 | Qwen3-14B | Q4_K_M | ~8.5 tok/s | Current quality/speed baseline |
 | Qwen3.8-27B | Q4 | ~0.7 tok/s | Works, but too slow interactively |
-| Qwen3.5-9B | TBD | TBD | Next planned test |
+| Qwen3.5-9B | TBD | ~43–45 tok/s | Core T01–T05 recorded; quality scoring and runtime metadata still pending |
 
 ## Target architecture
 
@@ -72,7 +72,9 @@
 - [x] Benchmark Gemma 4 E4B
 - [x] Benchmark Qwen3-14B Q4_K_M
 - [x] Benchmark Qwen3.8-27B Q4
-- [ ] Benchmark Qwen3.5-9B
+- [x] Run Qwen3.5-9B Core Benchmark (T01–T05)
+- [ ] Complete Qwen3.5-9B benchmark metadata and quality scoring
+- [ ] Compare Qwen3.5-9B with Qwen3-14B using identical prompts
 - [ ] Select primary daily model
 
 ### v0.2 — Local API
@@ -141,24 +143,11 @@ local-ai-workstation/
 └── notes/
 ```
 
-## GitHub mirror
+## GitHub repository
 
-Create a new empty GitHub repository, for example:
+The repository is already connected to GitHub through the `origin` remote.
 
-`local-ai-workstation`
-
-Then from this folder:
-
-```powershell
-git init
-git add .
-git commit -m "Initialize local AI workstation"
-git branch -M main
-git remote add origin https://github.com/<USERNAME>/local-ai-workstation.git
-git push -u origin main
-```
-
-After that the normal workflow is:
+Normal workflow:
 
 ```powershell
 git add .
