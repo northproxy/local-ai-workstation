@@ -1,8 +1,8 @@
 # Local AI Workstation
 
-Локальная AI-инфраструктура для работы с LLM, RAG, MCP, coding agents и автоматизацией.
+Local AI infrastructure for working with LLMs, RAG, MCP, coding agents, and automation.
 
-Главная цель проекта — не просто запускать локальные модели, а создать на собственном железе AI-среду, которая помогает вести другие проекты.
+The main goal of this project is not simply to run local AI models, but to build a self-hosted AI environment on personal hardware that supports and assists with the development and management of other projects.
 
 ## Hardware
 
@@ -36,32 +36,30 @@
 
 ## Target architecture
 
-```text
-                    LOCAL AI WORKSTATION
-                           │
-             ┌─────────────┴─────────────┐
-             │                           │
-          Laptop                      Desktop
-     RTX 5070 8 GB                  GPU 8 GB
-             │                           │
-       Primary LLM                 Utility LLM
-       Coding / Chat              Embeddings/RAG
-             │                           │
-             └─────────────┬─────────────┘
-                           │
-                      Local network
-                           │
-                 ┌─────────┴─────────┐
-                 │                   │
-             Open WebUI          Local APIs
-                 │                   │
-             MCP / Tools          Automations
-                 │
-        ┌────────┼─────────┐
-        │        │         │
-      Files     Git      Shell
-        │
-     Projects
+```mermaid
+flowchart TD
+    A["LOCAL AI WORKSTATION"]
+
+    A --> B["Laptop<br/>RTX 5070 8 GB"]
+    A --> C["Desktop<br/>GPU 8 GB"]
+
+    B --> D["Primary LLM<br/>Coding / Chat"]
+    C --> E["Utility LLM<br/>Embeddings / RAG"]
+
+    D --> F["Local Network"]
+    E --> F
+
+    F --> G["Open WebUI"]
+    F --> H["Local APIs"]
+
+    G --> I["MCP / Tools"]
+    H --> J["Automations"]
+
+    I --> K["Files"]
+    I --> L["Git"]
+    I --> M["Shell"]
+
+    K --> N["Projects"]
 ```
 
 ## Roadmap
