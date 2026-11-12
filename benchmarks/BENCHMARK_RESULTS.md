@@ -16,6 +16,12 @@ Use the exact prompts from `MODEL_TEST_PROMPTS_EN.md`.
 | Qwen3.5-9B | Q4_K_M | TEST 4 — Coding / Debugging | 43.46 | 0.48 s | 3283 | 9.1 | Daily-use verdict: pending |
 | Qwen3.5-9B | Q4_K_M | TEST 5 — Instruction Following | 43.68 | 0.46 s | 3004 | 8.4 | Daily-use verdict: pending |
 
+| Qwen3-14B | Q4_K_M | T01 — Explanation / Teaching | 1.60 | 106.95 s | 1395 | 7.2* | 40 layers; old run, runtime not directly comparable |
+| Qwen3-14B | Q4_K_M | T02 — Troubleshooting | 13.29 | 1.74 s | 1050 | 7.2* | 32 layers; Thinking 33.81 s; total time not recorded |
+| Qwen3-14B | Q4_K_M | T03 — Logical Reasoning | 12.25 | N/R | 1437 | 9.5* | 32 layers; runtime total 122.32 s |
+| Qwen3-14B | Q4_K_M | T04 — Coding / Debugging | 11.25 | N/R | 1463 | 9.2* | Offload 40 in supplied file; verify; runtime total 135.26 s |
+| Qwen3-14B | Q4_K_M | T05 — Instruction Following | 14.75 | 0.79 s | 552 | 9.8* | 32 layers; UI values; supplied log mismatch |
+
 ### Core benchmark snapshot
 
 ```text
@@ -24,6 +30,27 @@ Daily-use verdict: pending user evaluation
 ```
 
 The current result suggests that Qwen3.5-9B is a strong interactive-speed candidate, with especially strong results on logical reasoning and coding. The weakest Core result is Windows/DNS troubleshooting, where several diagnostic recommendations were technically questionable. Daily-use preference is intentionally left unresolved until the user has enough real-world experience with the model.
+
+---
+
+## Qwen3-14B — Core benchmark completion (2026-11-12)
+
+T01–T05 responses have been captured. Assistant technical scores use **six** metrics (Correctness, Reasoning, Instruction following, Clarity, Conciseness, Practical usefulness) and exclude the user's **Subjective quality**, which remains pending.
+
+| Test | Qwen3-14B six-metric mean | Qwen3.5-9B six-metric mean (recalculated from existing rubric) |
+|---|---:|---:|
+| T01 | 7.17 | 7.83 |
+| T02 | 7.17 | 6.50 |
+| T03 | 9.50 | 9.17 |
+| T04 | 9.17 | 9.17 |
+| T05 | 9.83 | 8.50 |
+| **Core mean** | **8.57** | **8.23** |
+
+*Scores in the summary table marked with `*` are rounded six-metric assistant scores, not the earlier seven-metric published Qwen3.5-9B scores. The pre-existing 8.1/10 Qwen3.5-9B snapshot includes an assistant-assigned subjective metric; it is intentionally preserved as historical data, not directly compared to 8.57.*
+
+**Comparability limitations:** Qwen3-14B T01 ran at 40 GPU layers and 1.60 tok/s, while later tests were intended to run at 32 layers; the submitted T04 file still records 40 layers, so the actual setting needs verification. Sampling temperature on the 14B submissions is not confirmed. T05 GUI reported 552 tokens / 14.75 tok/s / 18.90 s Thinking, but the submitted runtime log for that interval reported just 10 generated tokens; the two must not be conflated. Some output-token metrics include thinking tokens; final-answer length and total latency are distinct.
+
+**Provisional daily-model recommendation:** Qwen3.5-9B as the faster interactive default, Qwen3-14B as an optional quality-check model when latency is acceptable. Final selection awaits user subjective evaluation and matching run settings.
 
 ---
 
