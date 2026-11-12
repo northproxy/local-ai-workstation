@@ -37,15 +37,20 @@ This establishes an important project rule:
 
 ## Immediate next step
 
-Complete the **Qwen3.5-9B Core Benchmark** before moving to the local API milestone.
+**Active milestone (2026-11-12):** verify the LM Studio local API and a reliable bounded-output execution route for **Coding Benchmark CB01**, then compare four local models using an unchanged prompt and one controlled run protocol.
 
-The T01–T05 responses and performance measurements are already recorded. The remaining work is to:
+The earlier Qwen3.5-9B Core Benchmark T01–T05 is still awaiting full metadata recovery and quality scoring; this work remains open and should not be mistaken for the new CB01 coding experiment. The preferred daily model has **not** yet been selected.
 
-- complete missing runtime metadata where it can be recovered reliably;
-- score T01–T05 with the existing quality rubric;
-- record concise strengths, weaknesses, factual errors and instruction violations.
+### Coding Benchmark CB01 — current status (2026-11-12)
 
-After that, compare Qwen3.5-9B directly with Qwen3-14B using identical prompts and select the primary daily model.
+- Task: **Directory Integrity Scanner** (Python 3.11+ CLI; model-generated `integrity.py` and `test_integrity.py`).
+- Candidate inventory complete from LM Studio screenshots: Qwen3.5-9B, Qwen3-14B, Qwen3.8-27B, Qwen3-8B; all Q4_K_M GGUF. User reports all models configured and Thinking disabled.
+- Frozen prompt, rubric (60 automated + 40 expert points), evaluation program and results template prepared under `benchmarks/coding_benchmark_v1/`.
+- `CB01-Qwen3.5-9B-Run01` on 2026-11-12: **15589 output tokens, 44.02 tok/s, 354.66 s runtime processing, `truncated = 1`**. Repetitive planning; no complete Python code delivered; **automated tests not run**. The failure is recorded without declaring a model winner or a full /100 score.
+- LM Studio Chat `Limit Response Length` UI was observed to reject values above **2048**, so the intended 8192 output-token cap was **not verified** for Run01.
+- Next: confirm current LM Studio build and local API capabilities, verify output cap and thinking/template handling with a diagnostic prompt, then freeze the comparison transport and rerun as needed. Keep Run01 unchanged in history.
+
+See `benchmarks/coding_benchmark_v1/MODEL_CONFIGURATIONS.md`, `BENCHMARK_PROTOCOL.md`, `KNOWN_ISSUES.md`, and the original Run01 report.
 
 ## Near-term milestone
 
