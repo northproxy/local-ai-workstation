@@ -70,28 +70,32 @@ This distinction between RAM and VRAM is critical because VRAM directly enables 
 
 | Metric | Score /10 | Notes |
 |---|---:|---|
-| Correctness |  | |
-| Reasoning |  | |
-| Instruction following |  | |
-| Clarity |  | |
-| Conciseness |  | |
-| Practical usefulness |  | |
-| Subjective quality |  | |
+| Correctness | 6 | Explains the basic RAM/VRAM distinction but overstates weight swapping and gives an unsupported estimate that ~50% of 14B weights are swapped. |
+| Reasoning | 6 | Good capacity/bandwidth narrative, but a simplified offload mechanism underpins several deductions. |
+| Instruction following | 10 | Addresses all five requested topics, given hardware, no analogy, within word limit. |
+| Clarity | 8 | Easy to follow and logically structured. |
+| Conciseness | 7 | Some repetition and unnecessary absolute claims. |
+| Practical usefulness | 6 | Useful orientation, but inaccurate offload and KV-cache descriptions could misguide tuning. |
+| Subjective quality | Pending user evaluation | Not assigned by assistant. |
 
 ## Comparison notes
 
 ```text
-Strengths:
+Strengths: Clear structure and all requested topics covered.
 
-Weaknesses:
+Weaknesses: Oversimplifies CPU/GPU offload, memory transfers, and KV-cache handling.
 
-Hallucinations / factual errors:
+Hallucinations / factual errors: Unsupported '50%' weight swapping; claim of frequent PCIe swap as universal mechanism; mismatched 7B-exceeds-VRAM example.
 
-Instruction violations:
+Instruction violations: None observed.
 
-Better than Qwen3.5-9B:
+Better than Qwen3.5-9B: No clear advantage established.
 
-Worse than Qwen3.5-9B:
+Worse than Qwen3.5-9B: Similar technical inaccuracies; benchmark runtime markedly slower.
 
-Would I use this answer every day? YES / NO / PENDING
+Would I use this answer every day? PENDING USER EVALUATION
 ```
+
+## Evaluation status
+
+Six-criterion technical mean (subjective quality excluded): **7.17/10**. This is an assistant evaluation, not a user-provided rating.
