@@ -1,0 +1,5 @@
+model,gguf_filename,quantization,context,gpu_offload,thinking,temperature,top_p,top_k,seed,output_tokens,ttft_s,total_wall_s,tok_per_s,automated_60,expert_40,total_100,manual_fixes,notes
+Qwen3.5-9B,,,,,,,,,,,,,,,,,,
+Qwen3-14B,,,,,,,,,,,,,,,,,,
+Qwen3.8-27B,,,,,,,,,,,,,,,,,,
+Qwen3-8B,,,,,,,,,,,,,,,,,,
